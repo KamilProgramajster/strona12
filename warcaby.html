@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>warcaby</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="background-image: linear-gradient(170deg, #ff78c9 0, #ff6ed2 8.33%, #ff63da 16.67%, #ff5ae3 25%, #f651eb 33.33%, #db4af2 41.67%, #ba46f9 50%, #9045ff 58.33%, #5348ff 66.67%, #004cff 75%, #0050ff 83.33%, #0054ff 91.67%, #0056ff 100%);">
+        <div id="container">
+            <h1 id="naglowek">Wybrany tryb: Warcaby</h1>
+        
+            <table>
+            <tr><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td></tr>
+            <tr><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td></tr>
+            <tr><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td></tr>
+            <tr><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td></tr>
+            <tr><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td></tr>
+            <tr><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td></tr>
+            <tr><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td></tr>
+            <tr><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td><td id="black"></td><td id="white"></td></tr>
+        
+        </table>
+    </div>
+    <div id="instrukcja">
+        <h1 id="tutorial">Jak zagrać</h1>
+        <p id="tekst1">1.Gra odbywa się na standardowych zasadach gry w warcaby.<br/>2.jeżeli zbijesz pionek przeciwnika wrzuć go do swojego pudełka.<br/>3.Po wrzuceniu pionka przeciwnika automatycznie zostanie dodany punkt.<br/>4.Ten kto ma najwięcej punktów wygrywa gre.</p>
+    </div>
+
+    </body>
+    <style>
+        table{
+            margin-left: auto;
+            margin-right: auto;
+            width: 600px;
+            height:600px ;
+            margin-top: 200px;
+            position: relative;
+            
+        
+        }
+
+        #white{
+            background-color: white;
+            border:2px solid black;
+
+        }
+        #black{
+            background-color: black;
+        }
+        #container{
+            width: 1000px;
+            margin-left:auto;
+            margin-right: auto;
+        }
+        #naglowek{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            text-align: center;
+            color:rgb(119, 0, 255);
+            margin-top: 30px;
+            font-size: 50px;
+            
+        }
+        #instrukcja{
+            width: 300px;
+            height: 400px;
+            background-color: white;
+            border-radius: 20px;
+            margin-top: -500px;
+            margin-left: 130px;
+            
+        }
+        #tutorial{
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        #tekst1{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            text-align: center;
+        }
+        #instrukcja:hover{
+            transform: scale(1.2);
+        }
+    </style>
+</html>

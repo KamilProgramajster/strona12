@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tryb Jaki to kraj </title>
+</head>
+<body style="background-color: blue;">
+    <div id="question-box">
+        <h2 id="question"></h2>
+        <div id="answers"></div>
+    </div>
+    <div id="game-over" style="display:none;">
+        <h2 id="game-over-message"></h2>
+        <p id="score"></p>
+        <button onclick="startGame()">Zagraj ponownie</button>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Jakie Państwo słynie z ogromnej giełdy roślin?",
+                answers: [
+                    { text: "Holandia", correct: true },
+                    { text: "Polska", correct: false },
+                    { text: "Niemcy", correct: false },
+                    { text: "Hiszpania", correct: false }
+                ]
+            },
+            {
+                question: "Jaki kraj jest w centrum Europy?",
+                answers: [
+                    { text: "Polska", correct: true },
+                    { text: "Hiszpania", correct: false },
+                    { text: "Francja", correct: false },
+                    { text: "Wielka Brytania", correct: false }
+                ]
+            },
+            {
+                question: "Ile kontynentów istnieje na Ziemi?",
+                answers: [
+                    { text: "5", correct: false },
+                    { text: "6", correct: false },
+                    { text: "7", correct: true },
+                    { text: "8", correct: false }
+                ]
+            },
+            {
+                question: "Kto jest południowym sąsiadem Polski?",
+                answers: [
+                    { text: "Litwa", correct: false },
+                    { text: "Niemcy", correct: false },
+                    { text: "Słowacja", correct: true },
+                    { text: "Białoruś", correct: false }
+                ]
+            },
+            {
+                question: "W jakich czasach Polska przyjeła chrzest?",
+                answers: [
+                    { text: "Jagielonów", correct: false },
+                    { text: "Bolesława Chrobrego", correct: false },
+                    { text: "Mieszka I", correct: true },
+                    { text: "Ludwika Węgierskiego", correct: false }
+                ]
+            },
+            {
+                question: "Który z tych kraji ma najniższą średnią temperaturę z podanych?",
+                answers: [
+                    { text: "Niemcy", correct: false },
+                    { text: "Polska", correct: false },
+                    { text: "Grenlandia", correct: true },
+                    { text: "Chorwacja", correct: false }
+                ]
+            },
+            {
+                question: "Który z tych kraji nie leży w Europie?",
+                answers: [
+                    { text: "Mołdawia", correct: false },
+                    { text: "Austria", correct: false },
+                    { text: "Argentyna", correct: true },
+                    { text: "Białoruś", correct: false }
+                ]
+            },
+            {
+                question: "Na jakim Kontynencie leży Chile?",
+                answers: [
+                    { text: "Australia", correct: false },
+                    { text: "Europa", correct: false },
+                    { text: "Południowa Ameryka", correct: true },
+                    { text: "Azja", correct: false }
+                ]
+            },
+
+            
+        ];
+
+        let score = 0;
+        let availableQuestions = [];
+
+        function startGame() {
+            score = 0;
+            availableQuestions = [...questions];  
+            document.getElementById('game-over').style.display = 'none';
+            document.getElementById('question-box').style.display = 'block';
+            setNextQuestion();
+        }
+
+        function setNextQuestion() {
+            if (availableQuestions.length === 0) {
+                endGame("Gratulacje! Odpowiedziałeś na wszystkie pytania!");
+                return;
+            }
+
+            resetState();
+            const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+            const currentQuestion = availableQuestions.splice(randomIndex, 1)[0]; 
+            document.getElementById('question').textContent = currentQuestion.question;
+
+            currentQuestion.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.textContent = answer.text;
+                button.onclick = () => selectAnswer(answer.correct);
+                document.getElementById('answers').appendChild(button);
+            });
+        }
+
+        function resetState() {
+            const answersContainer = document.getElementById('answers');
+            while (answersContainer.firstChild) {
+                answersContainer.removeChild(answersContainer.firstChild);
+            }
+        }
+
+        function selectAnswer(correct) {
+            if (correct) {
+                score++;
+                setNextQuestion();
+            } else {
+                endGame("Zła odpowiedź!");
+            }
+        }
+
+        function endGame(message) {
+            document.getElementById('question-box').style.display = 'none';
+            document.getElementById('game-over').style.display = 'block';
+            document.getElementById('game-over-message').textContent = message;
+            document.getElementById('score').textContent = `Twój wynik: ${score} punktów.`;
+        }
+
+        startGame();
+    </script>
+    <style>
+        #question-box{
+            background-color: white;
+            border-radius: 20px;
+            text-align: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 30px;
+            padding-top: 10px;
+            width: 600px;
+            margin-top: 200px;
+            
+        }
+        button{
+            background-color: white;
+            border-radius: 20px;
+            margin-left: 40px;
+            width: 200px;
+            text-align: center;
+
+            
+        }
+        #question{
+            padding-left: 10px;
+            text-align: center;
+        }
+        #game-over{
+            background-color: white;
+            margin-left: 300px;
+            margin-right: 300px;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #game-over-message{
+            text-align: center;
+        }
+
+    
+    </style>
+</body>
+</html>
